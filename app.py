@@ -14,7 +14,7 @@ st.set_page_config(
 
 @st.cache_resource(show_spinner=False)
 def load_model():
-    return pipeline("sentiment-analysis", model="ProsusAI/finbert", device=-1, framework="pt")  # Fixed typo
+    return pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english", device=-1)
 
 with st.spinner('Loading model...'):
     pipe = load_model()
