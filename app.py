@@ -94,20 +94,20 @@ if st.button('🔍 Analyze', type='primary'):
     
             try:
                 sentiment = pipe(text)[0]
-                
+                label = sentiment['label'].lower()  
                 sentiments_data.append({
                     'title': article.get('title', 'No title'),
-                    'label': sentiment['label'],
+                    'label': label,
                     'score': sentiment['score']
                 })
                 
-                if sentiment['label'] == 'positive':
+                if label == 'positive':
                     total_score += sentiment['score']
                     num_articles += 1
-                elif sentiment['label'] == 'negative':
+                elif label == 'negative':
                     total_score -= sentiment['score']
                     num_articles += 1
-                elif sentiment['label'] == 'neutral':
+                elif label == 'neutral':
                     num_articles += 1
                     
             except Exception as e:
